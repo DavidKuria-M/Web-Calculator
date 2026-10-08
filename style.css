@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1e28;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.calculator{
+    width: 320px;
+    background-color: #13161f;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-sizing: border-box;
+}
+
+.calc-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.icon{
+    width: 28px;
+    height: 28px;
+}
+
+#theme-toggle{
+    background:none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    
+}
+#theme-icon{
+    width: 24px;
+    height: 24px;
+    
+}
+
+.calc-display{
+    background-color: #0b0d13;
+    border-radius: 16px;
+    padding:16px;
+    text-align: right;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90px;
+    box-sizing: border-box;
+}
+
+.previous-operand{
+    color: #7d8597;
+    font-size: 16px;
+}
+
+.current-operand{
+    color:#ffffff;
+    font-size: 36px;
+    font-weight: 600;
+}
+.calc-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 12px;
+}
+
+.btn{
+    height: 56px;
+    border: none;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+}
+
+.btn:active{
+    filter: brightness(1.5);
+}
+
+.btn-gray{
+    background-color: #242936;
+    color: #ffffff;
+}
+
+.btn-blue{
+    background-color: #2b7aefff;
+    color: #ffffff;
+}
+
+.btn-wide{
+    grid-column: span 2;
+}
