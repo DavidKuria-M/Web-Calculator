@@ -31,104 +31,100 @@ let curr_display = document.getElementById("current-operand");
 let currentInput = "";
 let previousInput = "";
 
+const MAX_DIGITS = 12;
 
 function updateDisplay(){
 
     prev_display.textContent = previousInput || "0";
     curr_display.textContent = currentInput || "0";
+
+    curr_display.scrollLeft = curr_display.scrollWidth;
 }
 
+function appendDigits(digit){
+    if(currentInput.length >= MAX_DIGITS) return;
+
+    currentInput += digit;
+    updateDisplay();
+}
 
 //numbers:
 
 nine.addEventListener("click", () => {
-    console.log("9");
-    currentInput += "9";
-    updateDisplay();
+    appendDigits("9");
 });
 
 eight.addEventListener("click", () => {
-    console.log("8");
-    currentInput += "8";
-    updateDisplay();
+    appendDigits("8");
 });
 
 seven.addEventListener("click", () => {
-    console.log("7");
-    currentInput += "7";
-    updateDisplay();
+    appendDigits("7");
 });
 
 six.addEventListener("click", () => {
-    currentInput += "6";
-    updateDisplay();
+    appendDigits("6");
 });
 
 five.addEventListener("click", () => {
-    currentInput += "5";
-    updateDisplay();
+    appendDigits("5");
 });
 
 four.addEventListener("click", () => {
-    currentInput += "4";
-    updateDisplay();
+    appendDigits("4");
 });
 
 three.addEventListener("click", () => {
-    currentInput += "3";
-    updateDisplay();
+   appendDigits("3");
 });
 
 two.addEventListener("click", () => {
-    currentInput += "2";
-    updateDisplay();
-})
+    appendDigits("2");
+});
 one.addEventListener("click", () => {
-    currentInput += "7";
-    updateDisplay();
-})
+    appendDigits("1");
+});
 
+zero.addEventListener("click", () => {
+    appendDigits("0");
+});
 //operators
 
 addition.addEventListener("click", () => {
-    currentInput += "+";
-    updateDisplay();
+    appendDigits("+");
 })
 
 subtraction.addEventListener("click", () => {
-    currentInput += "-";
-    updateDisplay();
+    appendDigits("-");
 })
 
 multiply.addEventListener("click", () => {
-    currentInput += '\u00D7';
-    updateDisplay();
+    appendDigits('\u00D7');
+    
 });
 
 divide.addEventListener("click", () => {
-    currentInput += '\u00F7';
-    updateDisplay();
+    appendDigits('\u00F7');
+
 });
 
 percentage.addEventListener("click", () => {
-    currentInput += '%';
-    updateDisplay();
+    appendDigits('%');
 });
 
 decimal.addEventListener("click", () => {
-    currentInput += '.';
-    updateDisplay();
+    appendDigits('.');
+
 });
 
 
 open_bracket.addEventListener("click", () => {
-    currentInput += "(";
-    updateDisplay();
+    appendDigits("(");
 })
 
 close_bracket.addEventListener("click", () => {
-    currentInput += ")";
-    updateDisplay();
+    appendDigits(")");
+
 });
 
 
@@ -158,6 +154,18 @@ function safeCalculate(expression){
     return new Function(`'use strict'; return (${formattedexpression})`)();
 }
 
+function formatResult(result){
+    const num = Number(result);
+
+    if(isNaN(num)) return "Error";
+
+    if(Math.abs(num) >= 1e11 || (Math.abs(num) < 1e-6 && num !==0)){
+        return num.toExponential(6);
+    }
+
+    return Number(Math.round(num + "e8") + "e-8").toString();
+}
+
 equals.addEventListener('click', () =>{
     
     if(!currentInput) return;
@@ -165,7 +173,8 @@ equals.addEventListener('click', () =>{
     try{
         previousInput = currentInput + "=";
         let result = safeCalculate(currentInput);
-        currentInput = result.toString();
+        let formattedresult = formatResult(result);
+        currentInput = formattedresult.toString();
 
     } catch (error){
         currentInput = "Error";

@@ -64,6 +64,18 @@ body{
     justify-content: space-between;
     height: 90px;
     box-sizing: border-box;
+    overflow: hidden;
+}
+
+.current-operand .previous-operand{
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.current-operand::-webkit-scrollbar,.previous-operand::-webkit-scrollbar{
+    display: none;
 }
 
 .previous-operand{
