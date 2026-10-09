@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script>
+   <script src="script.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
@@ -19,39 +19,41 @@
            </button>
         </header>
 
-        <div class="calc-display">
-            <div class="previous-operand">0</div>
-            <div class="current-operand">0</div>
+        <div class="calc-display" id="display">
+            <div class="previous-operand" id="previous-operand">0</div>
+            <div class="current-operand" id="current-operand">0</div>
         </div>
 
         <div class="calc-grid">
-            <button class="btn btn-gray">C</button>
-            <button class="btn btn-gray">(</button>
-            <button class="btn btn-gray">)</button>
-            <button class="btn btn-blue" aria-label="Divide">&divide;</button>
+            <button class="btn btn-gray" id="clear">C</button>
+            <button class="btn btn-gray" id="open-bracket">(</button>
+            <button class="btn btn-gray" id="close-bracket">)</button>
+            <button class="btn btn-blue" aria-label="divide" id="division">&divide;</button>
 
-            <button class="btn btn-gray">7</button>
-            <button class="btn btn-gray">8</button>
-            <button class="btn btn-gray">9</button>
-            <button class="btn btn-blue" aria-label="Multiply">&times;</button>
+            <button class="btn btn-gray" id="seven">7</button>
+            <button class="btn btn-gray" id="eight">8</button>
+            <button class="btn btn-gray" id="nine">9</button>
+            <button class="btn btn-blue" aria-label="Multiply" id="multiply">&times;</button>
 
-            <button class="btn btn-gray">4</button>
-            <button class="btn btn-gray">5</button>
-            <button class="btn btn-gray">6</button>
-            <button class="btn btn-blue">-</button>
+            <button class="btn btn-gray" id="four">4</button>
+            <button class="btn btn-gray" id="five">5</button>
+            <button class="btn btn-gray" id="six">6</button>
+            <button class="btn btn-blue" id="minus">-</button>
 
-            <button class="btn btn-gray">1</button>
-            <button class="btn btn-gray">2</button>
-            <button class="btn btn-gray">3</button>
-            <button class="btn btn-blue">+</button>
+            <button class="btn btn-gray" id="one">1</button>
+            <button class="btn btn-gray" id="two">2</button>
+            <button class="btn btn-gray" id="three">3</button>
+            <button class="btn btn-blue" id="plus">+</button>
 
-            <button class="btn btn-gray">0</button>
-            <button class="btn btn-gray">%</button>
-            <button class="btn btn-gray">.</button>
-            <button class="btn btn-blue">=</button>
+            <button class="btn btn-gray" id="zero">0</button>
+            <button class="btn btn-gray" id="percentage">%</button>
+            <button class="btn btn-gray" id="decimal">.</button>
+            <button class="btn btn-blue" id="equals">=</button>
 
         </div>
 
     </div>
+
+    
 </body>
 </html>
